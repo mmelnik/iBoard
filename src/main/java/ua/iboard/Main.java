@@ -7,12 +7,15 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import ua.iboard.db.DB;
 import ua.iboard.http.IBoardHandler;
 
+import java.util.logging.LogManager;
+
 /**
  * Created by Yevhen Chypachenko
  * Date 13.07.2017
  */
 public class Main {
     public static void main(String[] args) throws Exception {
+        LogManager.getLogManager().readConfiguration(Main.class.getResourceAsStream("/logger.properties"));
 
         Templates.getInstance();
         DB.getInstance();
