@@ -1,5 +1,6 @@
 package ua.iboard.db;
 
+import org.apache.commons.io.IOUtils;
 import org.h2.jdbcx.JdbcConnectionPool;
 import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
@@ -7,6 +8,8 @@ import org.skife.jdbi.v2.Handle;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
  * Created by Yevhen Chypachenko
@@ -29,18 +32,12 @@ public class DB {
         dbi = new DBI(ds);
 
         Handle h = dbi.open();
-        h.execute("CREATE TABLE category (id INT PRIMARY KEY, name VARCHAR(100))");
-        h.execute("CREATE TABLE post (id INT PRIMARY KEY, catId INT, name VARCHAR(100), price INT)");
-
-        h.execute("INSERT INTO category VALUES(1, 'Кольца') ");
-        h.execute("INSERT INTO category VALUES(2, 'Ожерелья') ");
-        h.execute("INSERT INTO category VALUES(3, 'Серьги') ");
-        h.execute("INSERT INTO category VALUES(4, 'Браслеты') ");
-        h.execute("INSERT INTO category VALUES(5, 'Колье') ");
-        h.execute("INSERT INTO category VALUES(6, 'Комплекты') ");
-
-        h.execute("INSERT INTO post VALUES(1, 1, 'Супер кольцо баюма', 199) ");
-        h.execute("INSERT INTO post VALUES(2, 1, 'Супер кольцо королевы муравьев', 99) ");
+        try {
+            h.createScript(IOUtils.toString(DB.class.getResourceAsStream("/db/schema.sql"), UTF_8)).execute();
+            h.createScript(IOUtils.toString(DB.class.getResourceAsStream("/db/initialData.sql"), UTF_8)).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         h.close();
     }
