@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 text-center">
-                            <button class="btn btn-danger" type="button">Добавить обьявление!</button>
+                            <a class="btn btn-danger" href="/post/add-new">Добавить обьявление!</a>
                         </div>
                     </div>
                 </div>

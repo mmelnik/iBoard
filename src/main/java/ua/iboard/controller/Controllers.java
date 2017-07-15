@@ -23,6 +23,7 @@ public class Controllers {
 
     private Controllers() {
         controllers.put("/", new MainPageController());
+        controllers.put("/post/add-new", new AddNewPostController());
     }
 
     public void handle(String target, HttpServletRequest req, HttpServletResponse resp) throws Exception {

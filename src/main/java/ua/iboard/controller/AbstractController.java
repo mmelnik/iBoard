@@ -3,6 +3,7 @@ package ua.iboard.controller;
 import ua.iboard.Templates;
 import ua.iboard.db.DB;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -14,8 +15,12 @@ import static java.util.Collections.unmodifiableMap;
  * Date 14.07.2017
  */
 public abstract class AbstractController implements IController {
-    protected Templates templates = Templates.getInstance();
     protected DB db = DB.getInstance();
+    private Templates templates = Templates.getInstance();
+
+    protected void render(String template, Object dataModel, HttpServletResponse response) throws Exception {
+        templates.getTemplate(template).process(dataModel, response.getWriter());
+    }
 
     protected Map<String, Object> asMap(String key, Object value) {
         return singletonMap(key, value);
