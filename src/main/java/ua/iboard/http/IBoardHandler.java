@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.rmi.ServerException;
 
 /**
  * Created by Yevhen Chypachenko
@@ -29,7 +28,7 @@ public class IBoardHandler extends AbstractHandler {
             controllers.handle(target, httpServletRequest, httpServletResponse);
             request.setHandled(true);
         } catch (Exception e) {
-            throw new ServerException("An error occured", e);
+            throw new ServletException("An error occurred", e);
         }
     }
 }
