@@ -1,3 +1,6 @@
+<#include "../component/search.ftl"/>
+<#include "../component/categories.ftl"/>
+
 <section>
     <div class="container">
         <div class="row">

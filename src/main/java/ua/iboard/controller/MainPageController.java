@@ -18,6 +18,6 @@ public class MainPageController extends AbstractController {
         List<Map<String, Object>> posts = db.select("select * from post");
         Map<String, Object> data = asMap("categories", categories, "posts", posts);
 
-        render("index.ftl", data, resp);
+        render("lastPost.ftl", data, resp);
     }
 }
