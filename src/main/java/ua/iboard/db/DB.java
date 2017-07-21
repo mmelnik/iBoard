@@ -46,4 +46,8 @@ public class DB {
             return h.select(query);
         }
     }
+
+    public Handle handle() {
+        return dbi.open();
+    }
 }

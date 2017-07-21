@@ -3,10 +3,16 @@
         <h3>Регистрация</h3>
     </div>
 
-    <form class="center" role="form">
+<#if registration_success??>
+    <div class="text-center">
+        <div class="alert alert-success" role="alert"><b>Поздаврляем!</b> Вы успешно зарегистрировались!</div>
+        <a class="btn btn-lg btn-success" href="/user/login">Авторизация</a>
+    </div>
+<#else>
+    <form method="post" class="center" role="form">
         <fieldset class="registration-form">
             <div class="form-group">
-                <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+                <input type="text" id="username" name="name" placeholder="Username" class="form-control">
             </div>
             <div class="form-group">
                 <input type="text" id="email" name="email" placeholder="E-mail" class="form-control">
@@ -19,8 +25,10 @@
                        class="form-control">
             </div>
             <div class="form-group">
-                <button class="btn btn-success btn-md btn-block">Register</button>
+                <button class="btn btn-success btn-md btn-block" type="submit">Register</button>
             </div>
         </fieldset>
     </form>
+</#if>
+
 </section>

@@ -6,7 +6,7 @@
     <form class="center" role="form">
         <fieldset class="registration-form">
             <div class="form-group">
-                <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+                <input type="text" id="email" name="email" placeholder="E-mail" class="form-control">
             </div>
             <div class="form-group">
                 <input type="password" id="password" name="password" placeholder="Password" class="form-control">
