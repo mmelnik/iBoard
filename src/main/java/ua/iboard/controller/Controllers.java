@@ -1,5 +1,8 @@
 package ua.iboard.controller;
 
+import ua.iboard.controller.user.AuthorizationController;
+import ua.iboard.controller.user.RegistrationController;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +27,8 @@ public class Controllers {
     private Controllers() {
         controllers.put("/", new MainPageController());
         controllers.put("/post/add-new", new AddNewPostController());
+        controllers.put("/user/register", new RegistrationController());
+        controllers.put("/user/login", new AuthorizationController());
     }
 
     public void handle(String target, HttpServletRequest req, HttpServletResponse resp) throws Exception {
