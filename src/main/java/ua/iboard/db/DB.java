@@ -34,7 +34,6 @@ public class DB {
         Handle h = dbi.open();
         try {
             h.createScript(IOUtils.toString(DB.class.getResourceAsStream("/db/schema.sql"), UTF_8)).execute();
-            h.createScript(IOUtils.toString(DB.class.getResourceAsStream("/db/initialData.sql"), UTF_8)).execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
