@@ -14,7 +14,7 @@
                     <li role="presentation" class="active"><a href="/category/">Все</a></li>
 
                 <#list categories as item>
-                    <li role="presentation"><a href="/category/${item.id}">${item.name}</a></li>
+                    <li role="presentation"><a href="/category/${item.alias}/">${item.name}</a></li>
                 </#list>
                 </ul>
             </div>

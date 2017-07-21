@@ -6,8 +6,9 @@ CREATE TABLE users (
 );
 
 CREATE TABLE category (
-  id   INT PRIMARY KEY,
-  name VARCHAR(100) UNIQUE NOT NULL
+  id    INT PRIMARY KEY,
+  name  VARCHAR(100) UNIQUE NOT NULL,
+  alias VARCHAR(100) UNIQUE NOT NULL
 );
 
 CREATE TABLE post (
@@ -21,12 +22,12 @@ CREATE TABLE post (
 
 INSERT INTO users VALUES (1, 'test@test.com', 'test', 'test');
 
-INSERT INTO category VALUES (1, 'Кольца');
-INSERT INTO category VALUES (2, 'Ожерелья');
-INSERT INTO category VALUES (3, 'Серьги');
-INSERT INTO category VALUES (4, 'Браслеты');
-INSERT INTO category VALUES (5, 'Колье');
-INSERT INTO category VALUES (6, 'Комплекты');
+INSERT INTO category VALUES (1, 'Кольца', 'ring');
+INSERT INTO category VALUES (2, 'Ожерелья', 'necklaces');
+INSERT INTO category VALUES (3, 'Серьги', 'ear');
+INSERT INTO category VALUES (4, 'Браслеты', 'bracelet');
+INSERT INTO category VALUES (5, 'Колье', 'choker');
+INSERT INTO category VALUES (6, 'Комплекты', 'jewelry-set');
 
 INSERT INTO post VALUES (1, 1, 1, 'Супер кольцо баюма', 'Продам соверешнно новое кольцо баюма! Не дорого!', 199);
 INSERT INTO post VALUES (2, 1, 1, 'Супер кольцо королевы муравьев', 'Lorem ipsum dolor sit amet, consectetur adip', 99);
