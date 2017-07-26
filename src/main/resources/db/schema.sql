@@ -19,13 +19,16 @@ CREATE TABLE post (
   userId      INT          NOT NULL,
   name        VARCHAR(100) NOT NULL,
   description VARCHAR(500) NOT NULL,
-  price       INT          NOT NULL
+  price       INT          NOT NULL,
+  FOREIGN KEY (catId) REFERENCES category (id),
+  FOREIGN KEY (userId) REFERENCES users (id),
 );
 
 CREATE TABLE post_gallery (
   id     INT PRIMARY KEY AUTO_INCREMENT,
   postId INT          NOT NULL,
-  path   VARCHAR(100) NOT NULL
+  path   VARCHAR(100) NOT NULL,
+  FOREIGN KEY (postId) REFERENCES post (id) ON DELETE CASCADE
 );
 
 INSERT INTO users VALUES (1, 'test@test.com', 'test', 'test', NULL, 0);
