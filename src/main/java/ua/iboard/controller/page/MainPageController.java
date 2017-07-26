@@ -1,5 +1,6 @@
-package ua.iboard.controller;
+package ua.iboard.controller.page;
 
+import ua.iboard.controller.AbstractController;
 import ua.iboard.db.Category;
 import ua.iboard.db.Post;
 

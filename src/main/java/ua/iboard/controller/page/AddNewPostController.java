@@ -1,4 +1,6 @@
-package ua.iboard.controller;
+package ua.iboard.controller.page;
+
+import ua.iboard.controller.AbstractController;
 
 /**
  * Created by Yevhen Chypachenko

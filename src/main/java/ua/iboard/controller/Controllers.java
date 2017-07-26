@@ -1,5 +1,7 @@
 package ua.iboard.controller;
 
+import ua.iboard.controller.page.AddNewPostController;
+import ua.iboard.controller.page.MainPageController;
 import ua.iboard.controller.user.AuthorizationController;
 import ua.iboard.controller.user.LogoutController;
 import ua.iboard.controller.user.RegistrationController;
@@ -34,7 +36,7 @@ public class Controllers {
     }
 
     public void handle(String target, HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        log.info("Handling request: " + req);
+        log.fine("Handling request: " + target);
         AbstractController controller = controllers.get(target);
         if (controller == null) {
             throw new ServletException("No register controller found for target: " + target);
