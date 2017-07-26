@@ -1,5 +1,7 @@
 package ua.iboard.db;
 
+import java.util.Map;
+
 import org.skife.jdbi.v2.Handle;
 
 /**
@@ -25,6 +27,14 @@ public class Users {
                     .bind("password", password)
                     .bind("name", name)
                     .execute();
+        }
+    }
+
+    public Map<String, Object> findByEmail(String email) {
+        try (Handle h = db.handle()) {
+            return h.createQuery("select * from users where email = :email")
+                    .bind("email", email)
+                    .first();
         }
     }
 }

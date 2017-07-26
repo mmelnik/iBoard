@@ -3,7 +3,13 @@
         <h3>Авторизация</h3>
     </div>
 
-    <form class="center" role="form">
+<#if alert??>
+    <div class="text-center">
+        <div class="alert alert-danger" role="alert">${alert}</div>
+    </div>
+</#if>
+
+    <form method="post" class="center" role="form">
         <fieldset class="registration-form">
             <div class="form-group">
                 <input type="text" id="email" name="email" placeholder="E-mail" class="form-control">
