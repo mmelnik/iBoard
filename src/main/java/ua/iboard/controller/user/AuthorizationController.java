@@ -22,7 +22,7 @@ public class AuthorizationController extends AbstractController {
         String method = req.getMethod();
         switch (method) {
             case "GET":
-                render("login.ftl", null);
+                render("login.ftl");
                 break;
             case "POST":
                 Map<String, String[]> data = req.getParameterMap();

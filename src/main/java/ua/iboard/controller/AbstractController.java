@@ -19,7 +19,7 @@ public abstract class AbstractController implements IController {
     private Templates templates = Templates.getInstance();
 
 
-    public void handle(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+    public final void handle(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         request.set(req);
         response.set(resp);
 
@@ -29,6 +29,10 @@ public abstract class AbstractController implements IController {
             request.remove();
             response.remove();
         }
+    }
+
+    protected void render(String module) throws Exception {
+        render(module, null);
     }
 
     protected void render(String module, Map<String, Object> dataModel) throws Exception {

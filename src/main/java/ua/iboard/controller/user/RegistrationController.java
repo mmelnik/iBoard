@@ -19,7 +19,7 @@ public class RegistrationController extends AbstractController {
         String method = req.getMethod();
         switch (method) {
             case "GET":
-                render("register.ftl", null);
+                render("register.ftl");
                 break;
             case "POST":
                 Map<String, String[]> data = req.getParameterMap();
