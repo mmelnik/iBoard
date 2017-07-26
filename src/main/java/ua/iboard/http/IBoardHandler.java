@@ -8,14 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.logging.Logger;
 
 /**
  * Created by Yevhen Chypachenko
  * Date 13.07.2017
  */
 public class IBoardHandler extends AbstractHandler {
-    private static final Logger log = Logger.getLogger(IBoardHandler.class.getName());
     private Controllers controllers = Controllers.getInstance();
 
     @Override

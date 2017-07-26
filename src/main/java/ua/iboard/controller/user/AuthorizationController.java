@@ -15,11 +15,14 @@ public class AuthorizationController extends AbstractController {
     private Users users = Users.getInstance();
 
     @Override
-    public void handle(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+    public void handleImpl() throws Exception {
+        HttpServletRequest req = req();
+        HttpServletResponse resp = resp();
+
         String method = req.getMethod();
         switch (method) {
             case "GET":
-                render("login.ftl", null, resp);
+                render("login.ftl", null);
                 break;
             case "POST":
                 Map<String, String[]> data = req.getParameterMap();
@@ -29,9 +32,9 @@ public class AuthorizationController extends AbstractController {
 
                 Map<String, Object> dbUser = users.findByEmail(email);
                 if (dbUser == null) {
-                    render("login.ftl", asMap("alert", "Пользователь не существует или пароль не правильный"), resp);
+                    render("login.ftl", asMap("alert", "Пользователь не существует или пароль не правильный"));
                 } else if (!dbUser.get("password").equals(password)) {
-                    render("login.ftl", asMap("alert", "Пользователь не существует или пароль не правильный"), resp);
+                    render("login.ftl", asMap("alert", "Пользователь не существует или пароль не правильный"));
                 } else {
                     String id = req.getSession().getId();
                     users.setSessionId((int) dbUser.get("id"), id);

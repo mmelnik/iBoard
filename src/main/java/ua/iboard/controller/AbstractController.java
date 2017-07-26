@@ -2,8 +2,8 @@ package ua.iboard.controller;
 
 import freemarker.template.Template;
 import ua.iboard.Templates;
-import ua.iboard.db.DB;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -13,10 +13,24 @@ import java.util.Map;
  * Date 14.07.2017
  */
 public abstract class AbstractController implements IController {
-    protected DB db = DB.getInstance();
+    private static final ThreadLocal<HttpServletRequest> request = new ThreadLocal<>();
+    private static final ThreadLocal<HttpServletResponse> response = new ThreadLocal<>();
     private Templates templates = Templates.getInstance();
 
-    protected void render(String module, Map<String, Object> dataModel, HttpServletResponse response) throws Exception {
+
+    public void handle(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        request.set(req);
+        response.set(resp);
+
+        try {
+            handleImpl();
+        } finally {
+            request.remove();
+            response.remove();
+        }
+    }
+
+    protected void render(String module, Map<String, Object> dataModel) throws Exception {
         Template template = templates.getTemplate("index.ftl");
 
         Map<String, Object> data = new LinkedHashMap<>();
@@ -25,7 +39,15 @@ public abstract class AbstractController implements IController {
         if (dataModel != null)
             data.putAll(dataModel);
 
-        template.process(data, response.getWriter());
+        template.process(data, response.get().getWriter());
+    }
+
+    protected HttpServletRequest req() {
+        return request.get();
+    }
+
+    protected HttpServletResponse resp() {
+        return response.get();
     }
 
     protected Map<String, Object> asMap(String key, Object value) {
@@ -40,4 +62,5 @@ public abstract class AbstractController implements IController {
         map.put(k2, v2);
         return map;
     }
+
 }

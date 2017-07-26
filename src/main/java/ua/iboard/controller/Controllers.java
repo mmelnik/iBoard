@@ -22,7 +22,7 @@ public class Controllers {
         return ourInstance;
     }
 
-    private final Map<String, IController> controllers = new HashMap<>();
+    private final Map<String, AbstractController> controllers = new HashMap<>();
 
     private Controllers() {
         controllers.put("/", new MainPageController());
@@ -33,7 +33,7 @@ public class Controllers {
 
     public void handle(String target, HttpServletRequest req, HttpServletResponse resp) throws Exception {
         log.info("Handling request: " + req);
-        IController controller = controllers.get(target);
+        AbstractController controller = controllers.get(target);
         if (controller == null) {
             throw new ServletException("No register controller found for target: " + target);
         }
