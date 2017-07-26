@@ -38,8 +38,7 @@ public class AuthorizationController extends AbstractController {
                 } else {
                     String id = req.getSession().getId();
                     users.setSessionId((int) dbUser.get("id"), id);
-                    resp.setStatus(302);
-                    resp.setHeader("Location", "/");
+                    redirect("/");
                 }
                 break;
         }

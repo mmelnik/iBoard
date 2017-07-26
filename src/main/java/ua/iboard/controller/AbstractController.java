@@ -2,6 +2,7 @@ package ua.iboard.controller;
 
 import freemarker.template.Template;
 import ua.iboard.Templates;
+import ua.iboard.db.Users;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,6 +40,11 @@ public abstract class AbstractController implements IController {
         if (dataModel != null)
             data.putAll(dataModel);
 
+        Map<String, Object> user = currentUser();
+        if (user != null) {
+            data.put("user", user);
+        }
+
         template.process(data, response.get().getWriter());
     }
 
@@ -48,6 +54,15 @@ public abstract class AbstractController implements IController {
 
     protected HttpServletResponse resp() {
         return response.get();
+    }
+
+    protected Map<String, Object> currentUser() {
+        return Users.getInstance().findBySessionId(req().getSession().getId());
+    }
+
+    protected void redirect(String location) {
+        resp().setStatus(302);
+        resp().addHeader("Location", location);
     }
 
     protected Map<String, Object> asMap(String key, Object value) {

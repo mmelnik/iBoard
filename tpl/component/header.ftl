@@ -12,8 +12,12 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="/">Главная</a></li>
+            <#if user??>
+                <li><a href="/user/logout">Выход</a></li>
+            <#else>
                 <li><a href="/user/register">Регистрация</a></li>
                 <li><a href="/user/login">Вход</a></li>
+            </#if>
             </ul>
         </div>
     </div>

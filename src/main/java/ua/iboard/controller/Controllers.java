@@ -1,6 +1,7 @@
 package ua.iboard.controller;
 
 import ua.iboard.controller.user.AuthorizationController;
+import ua.iboard.controller.user.LogoutController;
 import ua.iboard.controller.user.RegistrationController;
 
 import javax.servlet.ServletException;
@@ -29,6 +30,7 @@ public class Controllers {
         controllers.put("/post/add-new", new AddNewPostController());
         controllers.put("/user/register", new RegistrationController());
         controllers.put("/user/login", new AuthorizationController());
+        controllers.put("/user/logout", new LogoutController());
     }
 
     public void handle(String target, HttpServletRequest req, HttpServletResponse resp) throws Exception {
