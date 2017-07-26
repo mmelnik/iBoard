@@ -1,12 +1,11 @@
 package ua.iboard.controller.user;
 
-import java.util.Map;
-
 import ua.iboard.controller.AbstractController;
 import ua.iboard.db.Users;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * Created by Yevhen Chypachenko
@@ -31,10 +30,13 @@ public class AuthorizationController extends AbstractController {
                 Map<String, Object> dbUser = users.findByEmail(email);
                 if (dbUser == null) {
                     render("login.ftl", asMap("alert", "Пользователь не существует или пароль не правильный"), resp);
-                } else if (!dbUser.get("password").equals("password")) {
+                } else if (!dbUser.get("password").equals(password)) {
                     render("login.ftl", asMap("alert", "Пользователь не существует или пароль не правильный"), resp);
                 } else {
-                    // todo: auth user and redirect
+                    String id = req.getSession().getId();
+                    users.setSessionId((int) dbUser.get("id"), id);
+                    resp.setStatus(302);
+                    resp.setHeader("Location", "/");
                 }
                 break;
         }

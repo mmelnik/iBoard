@@ -1,8 +1,8 @@
 package ua.iboard.db;
 
-import java.util.Map;
-
 import org.skife.jdbi.v2.Handle;
+
+import java.util.Map;
 
 /**
  * Created by Yevhen Chypachenko
@@ -35,6 +35,20 @@ public class Users {
             return h.createQuery("select * from users where email = :email")
                     .bind("email", email)
                     .first();
+        }
+    }
+
+    public Map<String, Object> findBySessionId(String sessionId) {
+        try (Handle h = db.handle()) {
+            return h.createQuery("select * from users where sessionId = :sessionId")
+                    .bind("sessionId", sessionId)
+                    .first();
+        }
+    }
+
+    public void setSessionId(int id, String sessionId) {
+        try (Handle h = db.handle()) {
+            h.update("update users set sessionId = ? where id = ?", sessionId, id);
         }
     }
 }

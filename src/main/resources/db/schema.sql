@@ -1,10 +1,10 @@
 CREATE TABLE users (
-  id       INT PRIMARY KEY AUTO_INCREMENT,
-  email    VARCHAR(255) UNIQUE NOT NULL,
-  password VARCHAR(255)        NOT NULL,
-  name     VARCHAR(100) UNIQUE NOT NULL,
-  session  VARCHAR(100) UNIQUE,
-  access   INT
+  id        INT PRIMARY KEY AUTO_INCREMENT,
+  email     VARCHAR(255) UNIQUE NOT NULL,
+  password  VARCHAR(255)        NOT NULL,
+  name      VARCHAR(100) UNIQUE NOT NULL,
+  sessionId VARCHAR(100) UNIQUE,
+  access    INT
 );
 
 CREATE TABLE category (
@@ -28,7 +28,7 @@ CREATE TABLE post_gallery (
   path   VARCHAR(100) NOT NULL
 );
 
-INSERT INTO users VALUES (1, 'test@test.com', 'test', 'test', null, 0);
+INSERT INTO users VALUES (1, 'test@test.com', 'test', 'test', NULL, 0);
 
 INSERT INTO category VALUES (1, 'Кольца', 'ring');
 INSERT INTO category VALUES (2, 'Ожерелья', 'necklaces');

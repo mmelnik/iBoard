@@ -4,6 +4,8 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.server.session.DefaultSessionIdManager;
+import org.eclipse.jetty.server.session.SessionHandler;
 import ua.iboard.db.DB;
 import ua.iboard.http.IBoardHandler;
 
@@ -31,7 +33,12 @@ public class Main {
         resourceContext.setContextPath("/data");
         resourceContext.setHandler(resourceHandler);
 
-        HandlerList handlers = new HandlerList(resourceContext, new IBoardHandler());
+        IBoardHandler iBoardHandler = new IBoardHandler();
+
+        SessionHandler sessionHandler = new SessionHandler();
+        sessionHandler.setSessionIdManager(new DefaultSessionIdManager(server));
+
+        HandlerList handlers = new HandlerList(resourceContext, sessionHandler, iBoardHandler);
 
         server.setHandler(handlers);
 
