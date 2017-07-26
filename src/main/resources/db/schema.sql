@@ -2,17 +2,19 @@ CREATE TABLE users (
   id       INT PRIMARY KEY AUTO_INCREMENT,
   email    VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255)        NOT NULL,
-  name     VARCHAR(100) UNIQUE NOT NULL
+  name     VARCHAR(100) UNIQUE NOT NULL,
+  session  VARCHAR(100) UNIQUE,
+  access   INT
 );
 
 CREATE TABLE category (
-  id    INT PRIMARY KEY,
+  id    INT PRIMARY KEY AUTO_INCREMENT,
   name  VARCHAR(100) UNIQUE NOT NULL,
   alias VARCHAR(100) UNIQUE NOT NULL
 );
 
 CREATE TABLE post (
-  id          INT PRIMARY KEY,
+  id          INT PRIMARY KEY AUTO_INCREMENT,
   catId       INT          NOT NULL,
   userId      INT          NOT NULL,
   name        VARCHAR(100) NOT NULL,
@@ -20,7 +22,13 @@ CREATE TABLE post (
   price       INT          NOT NULL
 );
 
-INSERT INTO users VALUES (1, 'test@test.com', 'test', 'test');
+CREATE TABLE post_gallery (
+  id     INT PRIMARY KEY AUTO_INCREMENT,
+  postId INT          NOT NULL,
+  path   VARCHAR(100) NOT NULL
+);
+
+INSERT INTO users VALUES (1, 'test@test.com', 'test', 'test', null, 0);
 
 INSERT INTO category VALUES (1, 'Кольца', 'ring');
 INSERT INTO category VALUES (2, 'Ожерелья', 'necklaces');
