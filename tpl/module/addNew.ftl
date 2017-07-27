@@ -6,6 +6,9 @@
 
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
+            <#if alert??>
+                <div class="alert alert-danger">${alert}</div>
+            </#if>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form method="post" class="form-default">
