@@ -8,7 +8,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form method="post" class="center" role="form">
+                    <form method="post" class="form-default">
                         <div class="form-group">
                             <label>Заголовок</label>
                             <input class="form-control" type="text" name="title">
@@ -18,6 +18,7 @@
                             <input class="form-control" type="text" name="category">
                         </div>
                         <div class="form-group">
+                            <hr>
                             <label>Описание</label>
                             <input class="form-control" type="text" name="description">
                         </div>
@@ -34,7 +35,8 @@
                             <input type="file" name="file">
                         </div>
                         <div class="form-group">
-                            <input class="btn btn-lg btn-success" type="submit" value="Добавить">
+                            <hr>
+                            <input class="btn btn-block btn-success" type="submit" value="Добавить">
                         </div>
                     </form>
                 </div>

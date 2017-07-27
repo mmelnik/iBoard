@@ -873,11 +873,11 @@ ul.tag-cloud li {
   margin: 0;
   padding: 0;
 }
-.registration-form {
+
+.form-default {
   border: 0;
   background-color: #fff;
   padding: 20px;
-  display: inline-block;
 }
 #bottom {
   color: #bdc3c7;
@@ -1086,4 +1086,8 @@ ul.faq li > div h3 {
   text-align: center;
   margin-top: 150px;
   margin-bottom: 150px;
+}
+
+label {
+  font-weight: lighter;
 }

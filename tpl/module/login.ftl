@@ -9,18 +9,25 @@
     </div>
 </#if>
 
-    <form method="post" class="center" role="form">
-        <fieldset class="registration-form">
-            <div class="form-group">
-                <input type="text" id="email" name="email" placeholder="E-mail" class="form-control">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form method="post" class="form-default">
+                    <div class="form-group">
+                        <label>Введите E-Mail:</label>
+                        <input type="text" id="email" name="email" placeholder="E-mail" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Введите Пароль:</label>
+                        <input type="password" id="password" name="password" placeholder="Password"
+                               class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-muted">Нажмите кнопку Войти что бы авторизироваться</label>
+                        <button class="btn btn-success btn-block">Войти</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <input type="password" id="password" name="password" placeholder="Password" class="form-control">
-            </div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-success btn-md btn-block">Войти</button>
-            </div>
-        </fieldset>
-    </form>
+        </div>
+    </div>
 </section>
