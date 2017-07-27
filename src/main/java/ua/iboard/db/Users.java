@@ -1,8 +1,8 @@
 package ua.iboard.db;
 
-import org.skife.jdbi.v2.Handle;
-
 import java.util.Map;
+
+import org.skife.jdbi.v2.Handle;
 
 /**
  * Created by Yevhen Chypachenko
@@ -20,9 +20,9 @@ public class Users {
     private Users() {
     }
 
-    public int createUser(String email, String password, String name) {
+    public void createUser(String email, String password, String name) {
         try (Handle h = db.handle()) {
-            return h.createStatement("insert into users(email,password,name) values(:email,:password,:name)")
+            h.createStatement("insert into users(email,password,name) values(:email,:password,:name)")
                     .bind("email", email)
                     .bind("password", password)
                     .bind("name", name)

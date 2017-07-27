@@ -1,10 +1,11 @@
 package ua.iboard.controller.user;
 
-import ua.iboard.controller.AbstractController;
-import ua.iboard.db.Users;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
+
+import ua.iboard.controller.AbstractController;
+import ua.iboard.db.Users;
 
 /**
  * Created by Yevhen Chypachenko
@@ -24,7 +25,7 @@ public class RegistrationController extends AbstractController {
             case "POST":
                 Map<String, String[]> data = req.getParameterMap();
                 // todo: validation
-                int user = users.createUser(data.get("email")[0], data.get("password")[0], data.get("name")[0]);
+                users.createUser(data.get("email")[0], data.get("password")[0], data.get("name")[0]);
                 render("register.ftl", asMap("registration_success", true));
                 break;
         }
